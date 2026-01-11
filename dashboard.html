@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truth Ledger - API Status Monitor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 2px solid #333;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #00ff88;
+            font-weight: 700;
+        }
+        
+        .tagline {
+            font-size: 1.2em;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .stat-card {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #00ff88;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #888;
+            font-size: 0.9em;
+        }
+        
+        .api-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .api-card {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+        
+        .api-card:hover {
+            border-color: #00ff88;
+            transform: translateY(-2px);
+        }
+        
+        .api-card.up {
+            border-left: 4px solid #00ff88;
+        }
+        
+        .api-card.down {
+            border-left: 4px solid #ff4444;
+        }
+        
+        .api-card.degraded {
+            border-left: 4px solid #ffaa00;
+        }
+        
+        .api-name {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .api-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        .status-dot.up {
+            background: #00ff88;
+        }
+        
+        .status-dot.down {
+            background: #ff4444;
+        }
+        
+        .status-dot.degraded {
+            background: #ffaa00;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .uptime {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #00ff88;
+        }
+        
+        .api-metrics {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+            font-size: 0.9em;
+            color: #888;
+        }
+        
+        .metric {
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 1.1em;
+            color: #fff;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 2px solid #333;
+            color: #666;
+        }
+        
+        .update-time {
+            background: #1a1a1a;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border: 1px solid #333;
+        }
+        
+        a {
+            color: #00ff88;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .methodology {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            margin: 40px 0;
+        }
+        
+        .methodology h2 {
+            color: #00ff88;
+            margin-bottom: 15px;
+        }
+        
+        .methodology p {
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ Truth Ledger</h1>
+            <p class="tagline">Independent API Status Verification</p>
+            <p class="tagline" style="font-size: 0.9em;">Because we check so you don't have to trust</p>
+        </header>
+        
+        <div class="update-time">
+            Last Updated: <span id="lastUpdate">Loading...</span>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="totalChecks">0</div>
+                <div class="stat-label">Total Checks</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="apisMonitored">20</div>
+                <div class="stat-label">APIs Monitored</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="discrepancies">0</div>
+                <div class="stat-label">Discrepancies Found</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="dbSize">0 MB</div>
+                <div class="stat-label">Database Size</div>
+            </div>
+        </div>
+        
+        <h2 style="margin: 40px 0 20px 0; font-size: 1.8em;">API Status (Last 24 Hours)</h2>
+        
+        <div class="api-grid" id="apiGrid">
+            <!-- API cards will be inserted here by JavaScript -->
+        </div>
+        
+        <div class="methodology">
+            <h2>Verification Methodology</h2>
+            <p>Each API is checked hourly through direct endpoint testing. Results are logged to an immutable SQLite database with cryptographic hashing.</p>
+            <p><strong>Chain Integrity:</strong> Each check is linked to the previous check via SHA-256 hashes, creating a blockchain-like verification chain.</p>
+            <p><strong>Discrepancy Detection:</strong> We compare our measurements against official status pages. Variances >2% are flagged and reported.</p>
+            <p><strong>Data Retention:</strong> All checks are stored indefinitely. The database cannot be modified retroactively.</p>
+        </div>
+        
+        <footer>
+            <p>Truth Ledger v1.0.0</p>
+            <p>Open Source • Cryptographically Verified • Immutable</p>
+            <p style="margin-top: 20px;"><a href="https://github.com/your-repo/truth-ledger">View on GitHub</a></p>
+        </footer>
+    </div>
+    
+    <script>
+        // Sample data structure - replace with actual API endpoint
+        const sampleData = {
+            lastUpdate: new Date().toISOString(),
+            totalChecks: 43284,
+            apisMonitored: 20,
+            discrepancies: 3,
+            dbSize: "52.4 MB",
+            apis: [
+                { name: "Stripe API", status: "up", uptime: 99.98, checks: 2156, avgResponse: 145 },
+                { name: "OpenAI API", status: "up", uptime: 99.95, checks: 2156, avgResponse: 523 },
+                { name: "GitHub API", status: "up", uptime: 100.00, checks: 2156, avgResponse: 89 },
+                { name: "AWS Status", status: "up", uptime: 99.99, checks: 2156, avgResponse: 234 },
+                { name: "Vercel Status", status: "up", uptime: 99.97, checks: 2156, avgResponse: 156 },
+                { name: "Cloudflare", status: "up", uptime: 100.00, checks: 2156, avgResponse: 67 },
+                { name: "Binance API", status: "up", uptime: 99.92, checks: 2156, avgResponse: 312 },
+                { name: "CoinGecko API", status: "up", uptime: 99.88, checks: 2156, avgResponse: 289 },
+                { name: "Alpha Vantage", status: "up", uptime: 99.95, checks: 2156, avgResponse: 445 },
+                { name: "IEX Cloud", status: "up", uptime: 99.89, checks: 2156, avgResponse: 178 },
+                { name: "Finnhub API", status: "up", uptime: 99.94, checks: 2156, avgResponse: 201 },
+                { name: "Twitter API", status: "degraded", uptime: 98.75, checks: 2156, avgResponse: 567 },
+                { name: "Reddit API", status: "up", uptime: 99.91, checks: 2156, avgResponse: 234 },
+                { name: "Google Cloud", status: "up", uptime: 99.99, checks: 2156, avgResponse: 123 },
+                { name: "Azure Status", status: "up", uptime: 99.96, checks: 2156, avgResponse: 189 },
+                { name: "Heroku", status: "up", uptime: 99.87, checks: 2156, avgResponse: 278 },
+                { name: "Railway", status: "up", uptime: 99.93, checks: 2156, avgResponse: 145 },
+                { name: "Render", status: "up", uptime: 99.90, checks: 2156, avgResponse: 198 },
+                { name: "Supabase", status: "up", uptime: 99.94, checks: 2156, avgResponse: 167 },
+                { name: "PlanetScale", status: "up", uptime: 99.98, checks: 2156, avgResponse: 134 }
+            ]
+        };
+        
+        // Update stats
+        document.getElementById('lastUpdate').textContent = new Date(sampleData.lastUpdate).toLocaleString();
+        document.getElementById('totalChecks').textContent = sampleData.totalChecks.toLocaleString();
+        document.getElementById('apisMonitored').textContent = sampleData.apisMonitored;
+        document.getElementById('discrepancies').textContent = sampleData.discrepancies;
+        document.getElementById('dbSize').textContent = sampleData.dbSize;
+        
+        // Render API cards
+        const apiGrid = document.getElementById('apiGrid');
+        sampleData.apis.forEach(api => {
+            const card = document.createElement('div');
+            card.className = `api-card ${api.status}`;
+            
+            card.innerHTML = `
+                <div class="api-name">${api.name}</div>
+                <div class="api-status">
+                    <div class="status-dot ${api.status}"></div>
+                    <span>${api.status.charAt(0).toUpperCase() + api.status.slice(1)}</span>
+                </div>
+                <div class="uptime">${api.uptime}%</div>
+                <div class="api-metrics">
+                    <div class="metric">
+                        <div class="metric-value">${api.checks}</div>
+                        <div>Checks</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">${api.avgResponse}ms</div>
+                        <div>Avg Response</div>
+                    </div>
+                </div>
+            `;
+            
+            apiGrid.appendChild(card);
+        });
+        
+        // In production, replace this with:
+        // fetch('/api/status')
+        //     .then(response => response.json())
+        //     .then(data => { /* update UI with real data */ });
+    </script>
+</body>
+</html>
