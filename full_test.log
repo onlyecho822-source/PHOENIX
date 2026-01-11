@@ -1,0 +1,506 @@
+nohup: ignoring input
+======================================================================
+LIVE API VERIFICATION - NO SIMULATIONS
+Testing 24 APIs with 2-3 real HTTP requests each
+======================================================================
+
+[1/24]
+
+======================================================================
+LIVE TEST: CoinGecko Bitcoin
+URL: https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.08s
+  ✓ Size: 25 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.09s
+  ✓ Size: 25 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[2/24]
+
+======================================================================
+LIVE TEST: Binance BTC Price
+URL: https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 451
+  ✓ Time: 0.07s
+  ✓ Size: 224 bytes
+
+Attempt 2/2...
+  ✓ Status: 451
+  ✓ Time: 0.06s
+  ✓ Size: 224 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 0.0% (0/2)
+VERIFIED: ✗ NO
+
+[3/24]
+
+======================================================================
+LIVE TEST: CoinCap Assets
+URL: https://api.coincap.io/v2/assets?limit=5
+======================================================================
+
+Attempt 1/2...
+  ✗ CONNECTION FAILED
+
+Attempt 2/2...
+  ✗ CONNECTION FAILED
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 0.0% (0/2)
+VERIFIED: ✗ NO
+
+[4/24]
+
+======================================================================
+LIVE TEST: Blockchain Info
+URL: https://blockchain.info/ticker
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.12s
+  ✓ Size: 2799 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.17s
+  ✓ Size: 2799 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[5/24]
+
+======================================================================
+LIVE TEST: Coinlore Tickers
+URL: https://api.coinlore.net/api/tickers/
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.30s
+  ✓ Size: 37195 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.30s
+  ✓ Size: 37195 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[6/24]
+
+======================================================================
+LIVE TEST: Alternative.me Fear/Greed
+URL: https://api.alternative.me/fng/
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.10s
+  ✓ Size: 208 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.10s
+  ✓ Size: 208 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[7/24]
+
+======================================================================
+LIVE TEST: Kraken Ticker
+URL: https://api.kraken.com/0/public/Ticker?pair=XBTUSD
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.10s
+  ✓ Size: 308 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.28s
+  ✓ Size: 308 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[8/24]
+
+======================================================================
+LIVE TEST: NVD CVEs
+URL: https://services.nvd.nist.gov/rest/json/cves/2.0?resultsPerPage=5
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.23s
+  ✓ Size: 11048 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.22s
+  ✓ Size: 11048 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[9/24]
+
+======================================================================
+LIVE TEST: Exploit-DB RSS
+URL: https://www.exploit-db.com/rss.xml
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.07s
+  ✓ Size: 21896 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.07s
+  ✓ Size: 21896 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[10/24]
+
+======================================================================
+LIVE TEST: CISA Alerts
+URL: https://www.cisa.gov/uscert/ncas/alerts.xml
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.11s
+  ✓ Size: 165770 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.10s
+  ✓ Size: 165770 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[11/24]
+
+======================================================================
+LIVE TEST: Open-Meteo Weather
+URL: https://api.open-meteo.com/v1/forecast?latitude=40.71&longitude=-74.01&current_weather=true
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.45s
+  ✓ Size: 475 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.41s
+  ✓ Size: 475 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[12/24]
+
+======================================================================
+LIVE TEST: USGS Earthquakes
+URL: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.07s
+  ✓ Size: 2425 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.07s
+  ✓ Size: 2425 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[13/24]
+
+======================================================================
+LIVE TEST: NOAA Weather
+URL: https://api.weather.gov/
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.14s
+  ✓ Size: 9056 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.12s
+  ✓ Size: 9056 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[14/24]
+
+======================================================================
+LIVE TEST: World Bank GDP
+URL: https://api.worldbank.org/v2/country/USA/indicator/NY.GDP.MKTP.CD?format=json&per_page=1
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.18s
+  ✓ Size: 304 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.19s
+  ✓ Size: 304 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[15/24]
+
+======================================================================
+LIVE TEST: Federal Register
+URL: https://www.federalregister.gov/api/v1/documents.json?per_page=5
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.19s
+  ✓ Size: 7028 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.08s
+  ✓ Size: 7028 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[16/24]
+
+======================================================================
+LIVE TEST: HackerNews Top
+URL: https://hacker-news.firebaseio.com/v0/topstories.json
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.12s
+  ✓ Size: 4501 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.12s
+  ✓ Size: 4501 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[17/24]
+
+======================================================================
+LIVE TEST: GitHub Events
+URL: https://api.github.com/events
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.23s
+  ✓ Size: 19617 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.09s
+  ✓ Size: 19617 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[18/24]
+
+======================================================================
+LIVE TEST: Reddit Programming
+URL: https://www.reddit.com/r/programming/hot.json?limit=5
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 403
+  ✓ Time: 0.10s
+  ✓ Size: 190240 bytes
+
+Attempt 2/2...
+  ✓ Status: 403
+  ✓ Time: 0.10s
+  ✓ Size: 190240 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 0.0% (0/2)
+VERIFIED: ✗ NO
+
+[19/24]
+
+======================================================================
+LIVE TEST: Dev.to Articles
+URL: https://dev.to/api/articles?per_page=5
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.22s
+  ✓ Size: 12087 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.06s
+  ✓ Size: 12087 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[20/24]
+
+======================================================================
+LIVE TEST: Stack Overflow
+URL: https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&site=stackoverflow&pagesize=5
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.18s
+  ✓ Size: 3689 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.17s
+  ✓ Size: 3689 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[21/24]
+
+======================================================================
+LIVE TEST: Open Sky Aircraft
+URL: https://opensky-network.org/api/states/all?lamin=40&lomin=-75&lamax=41&lomax=-74
+======================================================================
+
+Attempt 1/2...
+  ✗ CONNECTION FAILED
+
+Attempt 2/2...
+  ✗ CONNECTION FAILED
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 0.0% (0/2)
+VERIFIED: ✗ NO
+
+[22/24]
+
+======================================================================
+LIVE TEST: GBFS NYC Bikes
+URL: https://gbfs.citibikenyc.com/gbfs/gbfs.json
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.07s
+  ✓ Size: 3619 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.06s
+  ✓ Size: 3619 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[23/24]
+
+======================================================================
+LIVE TEST: Wikipedia Random
+URL: https://en.wikipedia.org/w/api.php?action=query&list=random&rnnamespace=0&rnlimit=1&format=json
+======================================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Time: 0.12s
+  ✓ Size: 172 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Time: 0.10s
+  ✓ Size: 186 bytes
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 100.0% (2/2)
+VERIFIED: ✓ YES
+
+[24/24]
+
+======================================================================
+LIVE TEST: Public APIs List
+URL: https://api.publicapis.org/entries?category=finance
+======================================================================
+
+Attempt 1/2...
+  ✗ CONNECTION FAILED
+
+Attempt 2/2...
+  ✗ CONNECTION FAILED
+
+──────────────────────────────────────────────────────────────────────
+RELIABILITY: 0.0% (0/2)
+VERIFIED: ✗ NO
+
+======================================================================
+FINAL RESULTS SAVED
+======================================================================
+Total Tested: 24
+Verified: 19
+Failed: 5
+Partners Discovered: 0
+Partner Network Nodes: 0

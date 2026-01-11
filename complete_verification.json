@@ -1,0 +1,652 @@
+{
+  "tested_at": "2026-01-09T16:04:14.447483",
+  "total_tested": 24,
+  "verified": 22,
+  "failed": 2,
+  "partners_discovered": 0,
+  "partner_network_size": 0,
+  "apis": [
+    {
+      "name": "CoinGecko Bitcoin",
+      "url": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.16,
+          "size_bytes": 25,
+          "timestamp": "2026-01-09T16:02:27.712067"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.18,
+          "size_bytes": 25,
+          "timestamp": "2026-01-09T16:02:29.890379"
+        }
+      ],
+      "tested_at": "2026-01-09T16:02:30.891070"
+    },
+    {
+      "name": "Binance BTC Price",
+      "url": "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.41,
+          "size_bytes": 45,
+          "timestamp": "2026-01-09T16:02:32.801348"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.35,
+          "size_bytes": 45,
+          "timestamp": "2026-01-09T16:02:35.152621"
+        }
+      ],
+      "tested_at": "2026-01-09T16:02:36.153214"
+    },
+    {
+      "name": "CoinCap Assets",
+      "url": "https://api.coincap.io/v2/assets?limit=5",
+      "attempts": 2,
+      "success_count": 0,
+      "reliability_pct": 0.0,
+      "verified": false,
+      "results": [
+        {
+          "attempt": 1,
+          "success": false,
+          "error": "Connection Error"
+        },
+        {
+          "attempt": 2,
+          "success": false,
+          "error": "Connection Error"
+        }
+      ],
+      "tested_at": "2026-01-09T16:02:36.659463"
+    },
+    {
+      "name": "Blockchain Info",
+      "url": "https://blockchain.info/ticker",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.08,
+          "size_bytes": 2791,
+          "timestamp": "2026-01-09T16:02:38.238841"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.08,
+          "size_bytes": 2791,
+          "timestamp": "2026-01-09T16:02:40.321997"
+        }
+      ],
+      "tested_at": "2026-01-09T16:02:41.322667"
+    },
+    {
+      "name": "Coinlore Tickers",
+      "url": "https://api.coinlore.net/api/tickers/",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.52,
+          "size_bytes": 37181,
+          "timestamp": "2026-01-09T16:02:43.339332"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.68,
+          "size_bytes": 37181,
+          "timestamp": "2026-01-09T16:02:46.019975"
+        }
+      ],
+      "tested_at": "2026-01-09T16:02:47.021015"
+    },
+    {
+      "name": "Alternative.me Fear/Greed",
+      "url": "https://api.alternative.me/fng/",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.11,
+          "size_bytes": 208,
+          "timestamp": "2026-01-09T16:02:48.632051"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.24,
+          "size_bytes": 208,
+          "timestamp": "2026-01-09T16:02:50.870110"
+        }
+      ],
+      "tested_at": "2026-01-09T16:02:51.870798"
+    },
+    {
+      "name": "Kraken Ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XBTUSD",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.08,
+          "size_bytes": 308,
+          "timestamp": "2026-01-09T16:02:53.453766"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.21,
+          "size_bytes": 308,
+          "timestamp": "2026-01-09T16:02:55.667778"
+        }
+      ],
+      "tested_at": "2026-01-09T16:02:56.668281"
+    },
+    {
+      "name": "NVD CVEs",
+      "url": "https://services.nvd.nist.gov/rest/json/cves/2.0?resultsPerPage=5",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.75,
+          "size_bytes": 11048,
+          "timestamp": "2026-01-09T16:02:58.915861"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.61,
+          "size_bytes": 11048,
+          "timestamp": "2026-01-09T16:03:01.528642"
+        }
+      ],
+      "tested_at": "2026-01-09T16:03:02.529291"
+    },
+    {
+      "name": "Exploit-DB RSS",
+      "url": "https://www.exploit-db.com/rss.xml",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.14,
+          "size_bytes": 21896,
+          "timestamp": "2026-01-09T16:03:04.174045"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.06,
+          "size_bytes": 21896,
+          "timestamp": "2026-01-09T16:03:06.248937"
+        }
+      ],
+      "tested_at": "2026-01-09T16:03:07.250225"
+    },
+    {
+      "name": "CISA Alerts",
+      "url": "https://www.cisa.gov/uscert/ncas/alerts.xml",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.85,
+          "size_bytes": 165770,
+          "timestamp": "2026-01-09T16:03:09.601943"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.72,
+          "size_bytes": 165770,
+          "timestamp": "2026-01-09T16:03:12.323951"
+        }
+      ],
+      "tested_at": "2026-01-09T16:03:13.325261"
+    },
+    {
+      "name": "Open-Meteo Weather",
+      "url": "https://api.open-meteo.com/v1/forecast?latitude=40.71&longitude=-74.01&current_weather=true",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.44,
+          "size_bytes": 475,
+          "timestamp": "2026-01-09T16:03:15.268576"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.61,
+          "size_bytes": 475,
+          "timestamp": "2026-01-09T16:03:17.881557"
+        }
+      ],
+      "tested_at": "2026-01-09T16:03:18.882053"
+    },
+    {
+      "name": "USGS Earthquakes",
+      "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.35,
+          "size_bytes": 1742,
+          "timestamp": "2026-01-09T16:03:20.736489"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.28,
+          "size_bytes": 1742,
+          "timestamp": "2026-01-09T16:03:23.012597"
+        }
+      ],
+      "tested_at": "2026-01-09T16:03:24.013235"
+    },
+    {
+      "name": "NOAA Weather",
+      "url": "https://api.weather.gov/",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.26,
+          "size_bytes": 9056,
+          "timestamp": "2026-01-09T16:03:25.770896"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.22,
+          "size_bytes": 9056,
+          "timestamp": "2026-01-09T16:03:27.996205"
+        }
+      ],
+      "tested_at": "2026-01-09T16:03:28.996919"
+    },
+    {
+      "name": "World Bank GDP",
+      "url": "https://api.worldbank.org/v2/country/USA/indicator/NY.GDP.MKTP.CD?format=json&per_page=1",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.26,
+          "size_bytes": 304,
+          "timestamp": "2026-01-09T16:03:30.762647"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.11,
+          "size_bytes": 304,
+          "timestamp": "2026-01-09T16:03:32.870937"
+        }
+      ],
+      "tested_at": "2026-01-09T16:03:33.871478"
+    },
+    {
+      "name": "Federal Register",
+      "url": "https://www.federalregister.gov/api/v1/documents.json?per_page=5",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.05,
+          "size_bytes": 8703,
+          "timestamp": "2026-01-09T16:03:35.423093"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.17,
+          "size_bytes": 8703,
+          "timestamp": "2026-01-09T16:03:37.595372"
+        }
+      ],
+      "tested_at": "2026-01-09T16:03:38.595937"
+    },
+    {
+      "name": "HackerNews Top",
+      "url": "https://hacker-news.firebaseio.com/v0/topstories.json",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 0.12,
+          "size_bytes": 4501,
+          "timestamp": "2026-01-09T16:03:39.213651"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 0.11,
+          "size_bytes": 4501,
+          "timestamp": "2026-01-09T16:03:40.327208"
+        }
+      ],
+      "tested_at": "2026-01-09T16:03:41.327832"
+    },
+    {
+      "name": "GitHub Events",
+      "url": "https://api.github.com/events",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 0.32,
+          "size_bytes": 19673,
+          "timestamp": "2026-01-09T16:03:42.148527"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 0.26,
+          "size_bytes": 18747,
+          "timestamp": "2026-01-09T16:03:43.406996"
+        }
+      ],
+      "tested_at": "2026-01-09T16:03:44.408115"
+    },
+    {
+      "name": "Reddit Programming",
+      "url": "https://www.reddit.com/r/programming/hot.json?limit=5",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.58,
+          "size_bytes": 14609,
+          "timestamp": "2026-01-09T16:03:46.493280"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.58,
+          "size_bytes": 14609,
+          "timestamp": "2026-01-09T16:03:49.069039"
+        }
+      ],
+      "tested_at": "2026-01-09T16:03:50.069859"
+    },
+    {
+      "name": "Dev.to Articles",
+      "url": "https://dev.to/api/articles?per_page=5",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.19,
+          "size_bytes": 12087,
+          "timestamp": "2026-01-09T16:03:51.758375"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.03,
+          "size_bytes": 12087,
+          "timestamp": "2026-01-09T16:03:53.786099"
+        }
+      ],
+      "tested_at": "2026-01-09T16:03:54.786990"
+    },
+    {
+      "name": "Stack Overflow",
+      "url": "https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&site=stackoverflow&pagesize=5",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.15,
+          "size_bytes": 3547,
+          "timestamp": "2026-01-09T16:03:56.435226"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.21,
+          "size_bytes": 3547,
+          "timestamp": "2026-01-09T16:03:58.650107"
+        }
+      ],
+      "tested_at": "2026-01-09T16:03:59.650898"
+    },
+    {
+      "name": "Open Sky Aircraft",
+      "url": "https://opensky-network.org/api/states/all?lamin=40&lomin=-75&lamax=41&lomax=-74",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.85,
+          "size_bytes": 18291,
+          "timestamp": "2026-01-09T16:04:02.005986"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.73,
+          "size_bytes": 18291,
+          "timestamp": "2026-01-09T16:04:04.740125"
+        }
+      ],
+      "tested_at": "2026-01-09T16:04:05.740941"
+    },
+    {
+      "name": "GBFS NYC Bikes",
+      "url": "https://gbfs.citibikenyc.com/gbfs/gbfs.json",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.44,
+          "size_bytes": 3619,
+          "timestamp": "2026-01-09T16:04:07.683441"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 1.04,
+          "size_bytes": 3619,
+          "timestamp": "2026-01-09T16:04:09.723747"
+        }
+      ],
+      "tested_at": "2026-01-09T16:04:10.724369"
+    },
+    {
+      "name": "Wikipedia Random",
+      "url": "https://en.wikipedia.org/w/api.php?action=query&list=random&rnnamespace=0&rnlimit=1&format=json",
+      "attempts": 2,
+      "success_count": 2,
+      "reliability_pct": 100.0,
+      "verified": true,
+      "results": [
+        {
+          "attempt": 1,
+          "status": 200,
+          "success": true,
+          "time_sec": 0.12,
+          "size_bytes": 176,
+          "timestamp": "2026-01-09T16:04:11.342233"
+        },
+        {
+          "attempt": 2,
+          "status": 200,
+          "success": true,
+          "time_sec": 0.1,
+          "size_bytes": 204,
+          "timestamp": "2026-01-09T16:04:12.440397"
+        }
+      ],
+      "tested_at": "2026-01-09T16:04:13.441077"
+    },
+    {
+      "name": "Public APIs List",
+      "url": "https://api.publicapis.org/entries?category=finance",
+      "attempts": 2,
+      "success_count": 0,
+      "reliability_pct": 0.0,
+      "verified": false,
+      "results": [
+        {
+          "attempt": 1,
+          "success": false,
+          "error": "Connection Error"
+        },
+        {
+          "attempt": 2,
+          "success": false,
+          "error": "Connection Error"
+        }
+      ],
+      "tested_at": "2026-01-09T16:04:13.947328"
+    }
+  ],
+  "failed_list": [
+    "CoinCap Assets",
+    "Public APIs List"
+  ],
+  "discovered_partners": [],
+  "partner_network": {}
+}

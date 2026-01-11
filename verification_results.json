@@ -1,0 +1,807 @@
+{
+  "tested_at": "2026-01-09T15:03:37.434688",
+  "total_apis_tested": 10,
+  "verified_count": 5,
+  "failed_count": 5,
+  "partner_apis_discovered": 1,
+  "results": [
+    {
+      "name": "CoinGecko - Bitcoin Price",
+      "url": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",
+      "method": "GET",
+      "test_count": 2,
+      "success_count": 2,
+      "reliability": 100.0,
+      "avg_response_time": 6.3,
+      "verified": true,
+      "test_results": [
+        {
+          "attempt": 1,
+          "status_code": 200,
+          "success": true,
+          "response_time": 5.57,
+          "content_length": 25,
+          "headers": {
+            "Date": "Fri, 09 Jan 2026 15:02:19 GMT",
+            "Content-Type": "application/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Server": "cloudflare",
+            "x-frame-options": "SAMEORIGIN",
+            "x-xss-protection": "0",
+            "x-content-type-options": "nosniff",
+            "x-download-options": "noopen",
+            "x-permitted-cross-domain-policies": "none",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "Cache-Control": "max-age=30, public, must-revalidate, s-maxage=60",
+            "access-control-allow-origin": "*",
+            "access-control-allow-methods": "POST, PUT, DELETE, GET, OPTIONS",
+            "access-control-request-method": "*",
+            "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+            "access-control-expose-headers": "link, per-page, total",
+            "vary": "Accept-Encoding, Origin",
+            "Content-Encoding": "gzip",
+            "etag": "W/\"05e0d650028223c38f5b7e0804eb019e\"",
+            "x-request-id": "c0c6fdc6-662f-4ef7-8b38-65b5ba68374b",
+            "x-runtime": "0.001979",
+            "alternate-protocol": "443:npn-spdy/2",
+            "content-security-policy-report-only": "script-src https://accounts.google.com/gsi/client; frame-src https://accounts.google.com/gsi/; connect-src https://accounts.google.com/gsi/;",
+            "strict-transport-security": "max-age=15724800; includeSubdomains",
+            "cf-cache-status": "HIT",
+            "CF-RAY": "9bb4d0a28b087b8e-GYE",
+            "alt-svc": "h3=\":443\"; ma=86400"
+          },
+          "error": null,
+          "sample_data": {
+            "bitcoin": {
+              "usd": 90063
+            }
+          }
+        },
+        {
+          "attempt": 2,
+          "status_code": 200,
+          "success": true,
+          "response_time": 7.03,
+          "content_length": 25,
+          "headers": {
+            "Date": "Fri, 09 Jan 2026 15:02:27 GMT",
+            "Content-Type": "application/json; charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Server": "cloudflare",
+            "x-frame-options": "SAMEORIGIN",
+            "x-xss-protection": "0",
+            "x-content-type-options": "nosniff",
+            "x-download-options": "noopen",
+            "x-permitted-cross-domain-policies": "none",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "Cache-Control": "max-age=30, public, must-revalidate, s-maxage=60",
+            "access-control-allow-origin": "*",
+            "access-control-allow-methods": "POST, PUT, DELETE, GET, OPTIONS",
+            "access-control-request-method": "*",
+            "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+            "access-control-expose-headers": "link, per-page, total",
+            "vary": "Accept-Encoding, Origin",
+            "Content-Encoding": "gzip",
+            "etag": "W/\"05e0d650028223c38f5b7e0804eb019e\"",
+            "x-request-id": "c0c6fdc6-662f-4ef7-8b38-65b5ba68374b",
+            "x-runtime": "0.001979",
+            "alternate-protocol": "443:npn-spdy/2",
+            "content-security-policy-report-only": "script-src https://accounts.google.com/gsi/client; frame-src https://accounts.google.com/gsi/; connect-src https://accounts.google.com/gsi/;",
+            "strict-transport-security": "max-age=15724800; includeSubdomains",
+            "Age": "42",
+            "cf-cache-status": "HIT",
+            "CF-RAY": "9bb4d0d4be532ab2-GYE",
+            "alt-svc": "h3=\":443\"; ma=86400"
+          },
+          "error": null,
+          "sample_data": {
+            "bitcoin": {
+              "usd": 90063
+            }
+          }
+        }
+      ],
+      "tested_at": "2026-01-09T15:02:28.959521"
+    },
+    {
+      "name": "Binance - BTC Price",
+      "url": "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT",
+      "method": "GET",
+      "test_count": 2,
+      "success_count": 0,
+      "reliability": 0.0,
+      "avg_response_time": 5.0,
+      "verified": false,
+      "test_results": [
+        {
+          "attempt": 1,
+          "status_code": null,
+          "success": false,
+          "error": "Connection Error: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/ticker"
+        },
+        {
+          "attempt": 2,
+          "status_code": null,
+          "success": false,
+          "response_time": 10.0,
+          "error": "Timeout after 10s"
+        }
+      ],
+      "tested_at": "2026-01-09T15:02:44.049021"
+    },
+    {
+      "name": "CoinCap - Assets",
+      "url": "https://api.coincap.io/v2/assets?limit=5",
+      "method": "GET",
+      "test_count": 2,
+      "success_count": 0,
+      "reliability": 0.0,
+      "avg_response_time": 0.0,
+      "verified": false,
+      "test_results": [
+        {
+          "attempt": 1,
+          "status_code": null,
+          "success": false,
+          "error": "Connection Error: HTTPSConnectionPool(host='api.coincap.io', port=443): Max retries exceeded with url: /v2/assets?limi"
+        },
+        {
+          "attempt": 2,
+          "status_code": null,
+          "success": false,
+          "error": "Connection Error: HTTPSConnectionPool(host='api.coincap.io', port=443): Max retries exceeded with url: /v2/assets?limi"
+        }
+      ],
+      "tested_at": "2026-01-09T15:02:44.057565"
+    },
+    {
+      "name": "NVD - Recent CVEs",
+      "url": "https://services.nvd.nist.gov/rest/json/cves/2.0?resultsPerPage=5",
+      "method": "GET",
+      "test_count": 2,
+      "success_count": 0,
+      "reliability": 0.0,
+      "avg_response_time": 10.0,
+      "verified": false,
+      "test_results": [
+        {
+          "attempt": 1,
+          "status_code": null,
+          "success": false,
+          "response_time": 10.0,
+          "error": "Timeout after 10s"
+        },
+        {
+          "attempt": 2,
+          "status_code": null,
+          "success": false,
+          "response_time": 10.0,
+          "error": "Timeout after 10s"
+        }
+      ],
+      "tested_at": "2026-01-09T15:03:04.184362"
+    },
+    {
+      "name": "Open-Meteo - Weather",
+      "url": "https://api.open-meteo.com/v1/forecast?latitude=40.7128&longitude=-74.0060&current_weather=true",
+      "method": "GET",
+      "test_count": 2,
+      "success_count": 0,
+      "reliability": 0.0,
+      "avg_response_time": 0.0,
+      "verified": false,
+      "test_results": [
+        {
+          "attempt": 1,
+          "status_code": null,
+          "success": false,
+          "error": "Connection Error: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecas"
+        },
+        {
+          "attempt": 2,
+          "status_code": null,
+          "success": false,
+          "error": "Connection Error: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecas"
+        }
+      ],
+      "tested_at": "2026-01-09T15:03:14.198702"
+    },
+    {
+      "name": "USGS - Earthquakes",
+      "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson",
+      "method": "GET",
+      "test_count": 2,
+      "success_count": 1,
+      "reliability": 50.0,
+      "avg_response_time": 0.04,
+      "verified": true,
+      "test_results": [
+        {
+          "attempt": 1,
+          "status_code": null,
+          "success": false,
+          "error": "Connection Error: HTTPSConnectionPool(host='earthquake.usgs.gov', port=443): Max retries exceeded with url: /earthquak"
+        },
+        {
+          "attempt": 2,
+          "status_code": 200,
+          "success": true,
+          "response_time": 0.07,
+          "content_length": 2425,
+          "headers": {
+            "Content-Type": "application/json; charset=utf-8",
+            "Content-Length": "770",
+            "Connection": "keep-alive",
+            "Date": "Fri, 09 Jan 2026 15:02:36 GMT",
+            "Server": "Apache",
+            "Cache-Control": "public, max-age=60",
+            "Expires": "Fri, 09 Jan 2026 15:03:36 GMT",
+            "Last-Modified": "Fri, 09 Jan 2026 15:02:36 GMT",
+            "Content-Encoding": "gzip",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "*",
+            "Access-Control-Allow-Headers": "accept,origin,authorization,content-type",
+            "X-Frame-Options": "SAMEORIGIN",
+            "X-Content-Type-Options": "nosniff",
+            "X-XSS-Protection": "1",
+            "Strict-Transport-Security": "max-age=31536000",
+            "Vary": "Accept-Encoding",
+            "X-Cache": "Hit from cloudfront",
+            "Via": "1.1 1f133079dc1c94415e666e3b032459fe.cloudfront.net (CloudFront)",
+            "X-Amz-Cf-Pop": "IAD55-P5",
+            "X-Amz-Cf-Id": "nRvHOs08yy2KEavBQHwg3qfStOmYiCvA6cH250RwO1ds-wPOb8DHdQ==",
+            "Age": "43"
+          },
+          "error": null,
+          "sample_data": {
+            "type": "FeatureCollection",
+            "metadata": {
+              "generated": 1767970956000,
+              "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson",
+              "title": "USGS All Earthquakes, Past Hour",
+              "status": 200,
+              "api": "1.14.1",
+              "count": 3
+            },
+            "features": [
+              {
+                "type": "Feature",
+                "properties": {
+                  "mag": 0.83,
+                  "place": "12 km ENE of Cloverdale, CA",
+                  "time": 1767970850820,
+                  "updated": 1767970947283,
+                  "tz": null,
+                  "url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75292971",
+                  "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nc75292971.geojson",
+                  "felt": null,
+                  "cdi": null,
+                  "mmi": null,
+                  "alert": null,
+                  "status": "automatic",
+                  "tsunami": 0,
+                  "sig": 11,
+                  "net": "nc",
+                  "code": "75292971",
+                  "ids": ",nc75292971,",
+                  "sources": ",nc,",
+                  "types": ",nearby-cities,origin,phase-data,",
+                  "nst": 8,
+                  "dmin": 0.002349,
+                  "rms": 0.02,
+                  "gap": 162,
+                  "magType": "md",
+                  "type": "earthquake",
+                  "title": "M 0.8 - 12 km ENE of Cloverdale, CA"
+                },
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    -122.880668640137,
+                    38.8373336791992,
+                    2.25
+                  ]
+                },
+                "id": "nc75292971"
+              },
+              {
+                "type": "Feature",
+                "properties": {
+                  "mag": 2.2,
+                  "place": "15 km SE of Susitna, Alaska",
+                  "time": 1767970352024,
+                  "updated": 1767970452259,
+                  "tz": null,
+                  "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ak2026apvkdz",
+                  "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak2026apvkdz.geojson",
+                  "felt": null,
+                  "cdi": null,
+                  "mmi": null,
+                  "alert": null,
+                  "status": "automatic",
+                  "tsunami": 0,
+                  "sig": 74,
+                  "net": "ak",
+                  "code": "2026apvkdz",
+                  "ids": ",ak2026apvkdz,",
+                  "sources": ",ak,",
+                  "types": ",origin,phase-data,",
+                  "nst": 43,
+                  "dmin": 0.5,
+                  "rms": 0.8,
+                  "gap": 38,
+                  "magType": "ml",
+                  "type": "earthquake",
+                  "title": "M 2.2 - 15 km SE of Susitna, Alaska"
+                },
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    -150.281,
+                    61.462,
+                    29.5
+                  ]
+                },
+                "id": "ak2026apvkdz"
+              },
+              {
+                "type": "Feature",
+                "properties": {
+                  "mag": 2,
+                  "place": "59 km W of Anchor Point, Alaska",
+                  "time": 1767969938011,
+                  "updated": 1767970075231,
+                  "tz": null,
+                  "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ak2026apvefi",
+                  "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak2026apvefi.geojson",
+                  "felt": null,
+                  "cdi": null,
+                  "mmi": null,
+                  "alert": null,
+                  "status": "automatic",
+                  "tsunami": 0,
+                  "sig": 62,
+                  "net": "ak",
+                  "code": "2026apvefi",
+                  "ids": ",ak2026apvefi,",
+                  "sources": ",ak,",
+                  "types": ",origin,phase-data,",
+                  "nst": 33,
+                  "dmin": 0.2,
+                  "rms": 0.4,
+                  "gap": 83,
+                  "magType": "ml",
+                  "type": "earthquake",
+                  "title": "M 2.0 - 59 km W of Anchor Point, Alaska"
+                },
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    -152.897,
+                    59.8,
+                    103.1
+                  ]
+                },
+                "id": "ak2026apvefi"
+              }
+            ]
+          }
+        }
+      ],
+      "tested_at": "2026-01-09T15:03:20.274531"
+    },
+    {
+      "name": "World Bank - GDP Indicator",
+      "url": "https://api.worldbank.org/v2/country/USA/indicator/NY.GDP.MKTP.CD?format=json&per_page=1",
+      "method": "GET",
+      "test_count": 2,
+      "success_count": 2,
+      "reliability": 100.0,
+      "avg_response_time": 0.17,
+      "verified": true,
+      "test_results": [
+        {
+          "attempt": 1,
+          "status_code": 200,
+          "success": true,
+          "response_time": 0.18,
+          "content_length": 304,
+          "headers": {
+            "Date": "Fri, 09 Jan 2026 15:03:20 GMT",
+            "Content-Type": "application/json;charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Server": "cloudflare",
+            "CF-Ray": "9bb4d2203c945707-IAD",
+            "CF-Cache-Status": "DYNAMIC",
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "public, must-revalidate, max-age=2154191",
+            "Content-Encoding": "gzip",
+            "Expires": "Tue, 03 Feb 2026 13:26:31 GMT",
+            "Last-Modified": "Sun, 04 Jan 2026 13:26:31 GMT",
+            "Set-Cookie": "api.worldbank.orgCORS=403be8494990e664779c34c52fa19686; Path=/; SameSite=None; Secure, api.worldbank.org=403be8494990e664779c34c52fa19686; Path=/, dataapi.cookie=34ef53cd6dc80e4467c175edfbad153d; Path=/, __cf_bm=x6uXpFYfLNV.g4pV4u.n_dbl8zgVmo2Erc88xs980_Q-1767533191-1.0.1.1-qH22DU6m0PoGuCszo4mNUgsivkQtKWOx1ZeBh1ypRJGXbMppYhzlqwCU.dvP7S5oOMLdlRqY6VBK9txyNAvaW3XdDe02Gu0hMeUx4w_O5xA; path=/; expires=Sun, 04-Jan-26 13:56:31 GMT; domain=.worldbank.org; HttpOnly, _cfuvid=HEP4q96d7bVLLY9crlbjnQmVi9nPxhsstK5B7cnUK2Q-1767533191664-0.0.1.1-604800000; path=/; domain=.worldbank.org; HttpOnly, __cf_bm=TMklbdv_RIY2QvmETFwdWBA79zsYhYvtsSuZP68eMAA-1767971000-1.0.1.1-uXoGbnwlobt_ViiO5ja1JIS5lQpjDHoclTtMv2z74JQGqHBPbIa_h9yDW5YM7FtHRCi33nbFgnj3wKPVXtJ2Us23Z7gMCDdLUAR420bDmuc; path=/; expires=Fri, 09-Jan-26 15:33:20 GMT; domain=.worldbank.org; HttpOnly; Secure; SameSite=None, _cfuvid=i05.zizl0VLMGitaXC.A217C2hRh2VT1sviaLIf_FUw-1767971000449-0.0.1.1-604800000; path=/; domain=.worldbank.org; HttpOnly; Secure; SameSite=None",
+            "Vary": "accept-encoding",
+            "Access-Control-Allow-Headers": "X-Requested-With",
+            "Access-Control-Allow-Methods": "GET",
+            "Request-Context": "appId=cid-v1:da002513-bd8b-4441-9f30-737944134422",
+            "X-Powered-By": "ASP.NET"
+          },
+          "error": null,
+          "sample_data": [
+            {
+              "page": 1,
+              "pages": 65,
+              "per_page": 1,
+              "total": 65,
+              "sourceid": "2",
+              "lastupdated": "2025-12-19"
+            },
+            [
+              {
+                "indicator": {
+                  "id": "NY.GDP.MKTP.CD",
+                  "value": "GDP (current US$)"
+                },
+                "country": {
+                  "id": "US",
+                  "value": "United States"
+                },
+                "countryiso3code": "USA",
+                "date": "2024",
+                "value": 28750956130731.2,
+                "unit": "",
+                "obs_status": "",
+                "decimal": 0
+              }
+            ]
+          ]
+        },
+        {
+          "attempt": 2,
+          "status_code": 200,
+          "success": true,
+          "response_time": 0.16,
+          "content_length": 304,
+          "headers": {
+            "Date": "Fri, 09 Jan 2026 15:03:21 GMT",
+            "Content-Type": "application/json;charset=utf-8",
+            "Transfer-Encoding": "chunked",
+            "Connection": "keep-alive",
+            "Server": "cloudflare",
+            "CF-Ray": "9bb4d2278fc6dddf-IAD",
+            "CF-Cache-Status": "DYNAMIC",
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "public, must-revalidate, max-age=2154190",
+            "Content-Encoding": "gzip",
+            "Expires": "Tue, 03 Feb 2026 13:26:31 GMT",
+            "Last-Modified": "Sun, 04 Jan 2026 13:26:31 GMT",
+            "Set-Cookie": "api.worldbank.orgCORS=403be8494990e664779c34c52fa19686; Path=/; SameSite=None; Secure, api.worldbank.org=403be8494990e664779c34c52fa19686; Path=/, dataapi.cookie=34ef53cd6dc80e4467c175edfbad153d; Path=/, __cf_bm=x6uXpFYfLNV.g4pV4u.n_dbl8zgVmo2Erc88xs980_Q-1767533191-1.0.1.1-qH22DU6m0PoGuCszo4mNUgsivkQtKWOx1ZeBh1ypRJGXbMppYhzlqwCU.dvP7S5oOMLdlRqY6VBK9txyNAvaW3XdDe02Gu0hMeUx4w_O5xA; path=/; expires=Sun, 04-Jan-26 13:56:31 GMT; domain=.worldbank.org; HttpOnly, _cfuvid=HEP4q96d7bVLLY9crlbjnQmVi9nPxhsstK5B7cnUK2Q-1767533191664-0.0.1.1-604800000; path=/; domain=.worldbank.org; HttpOnly, __cf_bm=IkpfRtU18LMGNPrK.s3bEWMvGAwgk_pNxqS_gTclji4-1767971001-1.0.1.1-C7PwPq9EMQDFd_6JybVWTtXWjFALb2..ExdRG01cWcRN5sbriIoIiO84d8KCD201pnvL4ompI424EgsV6Kj3FPGGjDR1GVX48rQfVY_OD6U; path=/; expires=Fri, 09-Jan-26 15:33:21 GMT; domain=.worldbank.org; HttpOnly; Secure; SameSite=None, _cfuvid=PaylJN7D_5Rw2EVrwy_EDy6QXwujgVF1fNKlRNFi5kI-1767971001602-0.0.1.1-604800000; path=/; domain=.worldbank.org; HttpOnly; Secure; SameSite=None",
+            "Vary": "accept-encoding",
+            "Access-Control-Allow-Headers": "X-Requested-With",
+            "Access-Control-Allow-Methods": "GET",
+            "Request-Context": "appId=cid-v1:da002513-bd8b-4441-9f30-737944134422",
+            "X-Powered-By": "ASP.NET"
+          },
+          "error": null,
+          "sample_data": [
+            {
+              "page": 1,
+              "pages": 65,
+              "per_page": 1,
+              "total": 65,
+              "sourceid": "2",
+              "lastupdated": "2025-12-19"
+            },
+            [
+              {
+                "indicator": {
+                  "id": "NY.GDP.MKTP.CD",
+                  "value": "GDP (current US$)"
+                },
+                "country": {
+                  "id": "US",
+                  "value": "United States"
+                },
+                "countryiso3code": "USA",
+                "date": "2024",
+                "value": 28750956130731.2,
+                "unit": "",
+                "obs_status": "",
+                "decimal": 0
+              }
+            ]
+          ]
+        }
+      ],
+      "tested_at": "2026-01-09T15:03:22.614364"
+    },
+    {
+      "name": "HackerNews - Top Stories",
+      "url": "https://hacker-news.firebaseio.com/v0/topstories.json",
+      "method": "GET",
+      "test_count": 2,
+      "success_count": 2,
+      "reliability": 100.0,
+      "avg_response_time": 0.12,
+      "verified": true,
+      "test_results": [
+        {
+          "attempt": 1,
+          "status_code": 200,
+          "success": true,
+          "response_time": 0.12,
+          "content_length": 4501,
+          "headers": {
+            "Server": "nginx",
+            "Date": "Fri, 09 Jan 2026 15:03:22 GMT",
+            "Content-Type": "application/json; charset=utf-8",
+            "Content-Length": "4501",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "no-cache",
+            "Strict-Transport-Security": "max-age=31556926; includeSubDomains; preload"
+          },
+          "error": null,
+          "sample_data": [
+            46553343,
+            46550895
+          ]
+        },
+        {
+          "attempt": 2,
+          "status_code": 200,
+          "success": true,
+          "response_time": 0.13,
+          "content_length": 4501,
+          "headers": {
+            "Server": "nginx",
+            "Date": "Fri, 09 Jan 2026 15:03:23 GMT",
+            "Content-Type": "application/json; charset=utf-8",
+            "Content-Length": "4501",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "no-cache",
+            "Strict-Transport-Security": "max-age=31556926; includeSubDomains; preload"
+          },
+          "error": null,
+          "sample_data": [
+            46553343,
+            46550895
+          ]
+        }
+      ],
+      "tested_at": "2026-01-09T15:03:24.859553"
+    },
+    {
+      "name": "GitHub - Public Events",
+      "url": "https://api.github.com/events",
+      "method": "GET",
+      "test_count": 2,
+      "success_count": 2,
+      "reliability": 100.0,
+      "avg_response_time": 0.28,
+      "verified": true,
+      "test_results": [
+        {
+          "attempt": 1,
+          "status_code": 200,
+          "success": true,
+          "response_time": 0.26,
+          "content_length": 19134,
+          "headers": {
+            "Date": "Fri, 09 Jan 2026 15:03:25 GMT",
+            "Content-Type": "application/json; charset=utf-8",
+            "Cache-Control": "public, max-age=300, s-maxage=300",
+            "Vary": "Accept,Accept-Encoding, Accept, X-Requested-With",
+            "ETag": "W/\"415b8520597035889212789b0336f6ca74712e6f7ffe2f8edadb3604e73bd9b4\"",
+            "Last-Modified": "Fri, 09 Jan 2026 14:58:23 GMT",
+            "X-Poll-Interval": "60",
+            "X-GitHub-Media-Type": "github.v3; format=json",
+            "Link": "<https://api.github.com/events?page=2>; rel=\"next\", <https://api.github.com/events?page=10>; rel=\"last\"",
+            "x-github-api-version-selected": "2022-11-28",
+            "Access-Control-Expose-Headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset",
+            "Access-Control-Allow-Origin": "*",
+            "Strict-Transport-Security": "max-age=31536000; includeSubdomains; preload",
+            "X-Frame-Options": "deny",
+            "X-Content-Type-Options": "nosniff",
+            "X-XSS-Protection": "0",
+            "Referrer-Policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+            "Content-Security-Policy": "default-src 'none'",
+            "Content-Encoding": "gzip",
+            "Server": "github.com",
+            "Accept-Ranges": "bytes",
+            "X-RateLimit-Limit": "60",
+            "X-RateLimit-Remaining": "59",
+            "X-RateLimit-Reset": "1767974604",
+            "X-RateLimit-Resource": "core",
+            "X-RateLimit-Used": "1",
+            "Transfer-Encoding": "chunked",
+            "X-GitHub-Request-Id": "9CA0:2A0D15:12F2DD8:51B625C:696118BC"
+          },
+          "error": null,
+          "sample_data": [
+            {
+              "id": "7327447223",
+              "type": "PushEvent",
+              "actor": {
+                "id": 41898282,
+                "login": "github-actions[bot]",
+                "display_login": "github-actions",
+                "gravatar_id": "",
+                "url": "https://api.github.com/users/github-actions[bot]",
+                "avatar_url": "https://avatars.githubusercontent.com/u/41898282?"
+              },
+              "repo": {
+                "id": 452760799,
+                "name": "n-kodem/n-kodem",
+                "url": "https://api.github.com/repos/n-kodem/n-kodem"
+              },
+              "payload": {
+                "repository_id": 452760799,
+                "push_id": 29622439116,
+                "ref": "refs/heads/master",
+                "head": "c71dd108ebc2984fb89b30dcf8c8cf4a1f435932",
+                "before": "614202c05f244d18bdc6a2df448afc7bcab62382"
+              },
+              "public": true,
+              "created_at": "2026-01-09T14:58:23Z"
+            },
+            {
+              "id": "7327447222",
+              "type": "PushEvent",
+              "actor": {
+                "id": 149868447,
+                "login": "kurimochi",
+                "display_login": "kurimochi",
+                "gravatar_id": "",
+                "url": "https://api.github.com/users/kurimochi",
+                "avatar_url": "https://avatars.githubusercontent.com/u/149868447?"
+              },
+              "repo": {
+                "id": 990648762,
+                "name": "kurimochi/kurimochi",
+                "url": "https://api.github.com/repos/kurimochi/kurimochi"
+              },
+              "payload": {
+                "repository_id": 990648762,
+                "push_id": 29622438899,
+                "ref": "refs/heads/main",
+                "head": "003751d8bd35def1bb6841be6f683cebca82ea4a",
+                "before": "132303fb6d3724a851d9c2b2f2e7c8debd7ef254"
+              },
+              "public": true,
+              "created_at": "2026-01-09T14:58:22Z"
+            }
+          ]
+        },
+        {
+          "attempt": 2,
+          "status_code": 200,
+          "success": true,
+          "response_time": 0.29,
+          "content_length": 19413,
+          "headers": {
+            "Date": "Fri, 09 Jan 2026 15:03:26 GMT",
+            "Content-Type": "application/json; charset=utf-8",
+            "Cache-Control": "public, max-age=300, s-maxage=300",
+            "Vary": "Accept,Accept-Encoding, Accept, X-Requested-With",
+            "ETag": "W/\"dd79364896f076eebc904e50b0c11739b2a9250a350cf7f9b56c51112e2b55a4\"",
+            "Last-Modified": "Fri, 09 Jan 2026 14:58:25 GMT",
+            "X-Poll-Interval": "60",
+            "X-GitHub-Media-Type": "github.v3; format=json",
+            "Link": "<https://api.github.com/events?page=2>; rel=\"next\", <https://api.github.com/events?page=10>; rel=\"last\"",
+            "x-github-api-version-selected": "2022-11-28",
+            "Access-Control-Expose-Headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset",
+            "Access-Control-Allow-Origin": "*",
+            "Strict-Transport-Security": "max-age=31536000; includeSubdomains; preload",
+            "X-Frame-Options": "deny",
+            "X-Content-Type-Options": "nosniff",
+            "X-XSS-Protection": "0",
+            "Referrer-Policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+            "Content-Security-Policy": "default-src 'none'",
+            "Content-Encoding": "gzip",
+            "Server": "github.com",
+            "Accept-Ranges": "bytes",
+            "X-RateLimit-Limit": "60",
+            "X-RateLimit-Remaining": "51",
+            "X-RateLimit-Reset": "1767974175",
+            "X-RateLimit-Resource": "core",
+            "X-RateLimit-Used": "9",
+            "Transfer-Encoding": "chunked",
+            "X-GitHub-Request-Id": "B046:23670:438C14E:128F378A:696118BE"
+          },
+          "error": null,
+          "sample_data": [
+            {
+              "id": "7327448166",
+              "type": "CreateEvent",
+              "actor": {
+                "id": 74312871,
+                "login": "frostbite69425",
+                "display_login": "frostbite69425",
+                "gravatar_id": "",
+                "url": "https://api.github.com/users/frostbite69425",
+                "avatar_url": "https://avatars.githubusercontent.com/u/74312871?"
+              },
+              "repo": {
+                "id": 1131153400,
+                "name": "frostbite69425/TicTacToe",
+                "url": "https://api.github.com/repos/frostbite69425/TicTacToe"
+              },
+              "payload": {
+                "ref": "main",
+                "ref_type": "branch",
+                "full_ref": "refs/heads/main",
+                "master_branch": "main",
+                "description": "A browser tictactoe project for theOdinProject",
+                "pusher_type": "user"
+              },
+              "public": true,
+              "created_at": "2026-01-09T14:58:25Z"
+            },
+            {
+              "id": "7327448056",
+              "type": "PushEvent",
+              "actor": {
+                "id": 244841556,
+                "login": "escapingwork",
+                "display_login": "escapingwork",
+                "gravatar_id": "",
+                "url": "https://api.github.com/users/escapingwork",
+                "avatar_url": "https://avatars.githubusercontent.com/u/244841556?"
+              },
+              "repo": {
+                "id": 1099385184,
+                "name": "escapingwork/teenagerspopulation",
+                "url": "https://api.github.com/repos/escapingwork/teenagerspopulation"
+              },
+              "payload": {
+                "repository_id": 1099385184,
+                "push_id": 29622440016,
+                "ref": "refs/heads/main",
+                "head": "0dbdbe44cc09225d20beda2a59620a2613560128",
+                "before": "006de33fead53a1b427dde7918a002f24b465d38"
+              },
+              "public": true,
+              "created_at": "2026-01-09T14:58:25Z"
+            }
+          ]
+        }
+      ],
+      "tested_at": "2026-01-09T15:03:27.418958"
+    },
+    {
+      "name": "Open Sky - Aircraft",
+      "url": "https://opensky-network.org/api/states/all?lamin=40&lomin=-75&lamax=41&lomax=-74",
+      "method": "GET",
+      "test_count": 2,
+      "success_count": 0,
+      "reliability": 0.0,
+      "avg_response_time": 0.0,
+      "verified": false,
+      "test_results": [
+        {
+          "attempt": 1,
+          "status_code": null,
+          "success": false,
+          "error": "Connection Error: HTTPSConnectionPool(host='opensky-network.org', port=443): Max retries exceeded with url: /api/state"
+        },
+        {
+          "attempt": 2,
+          "status_code": null,
+          "success": false,
+          "error": "Connection Error: HTTPSConnectionPool(host='opensky-network.org', port=443): Max retries exceeded with url: /api/state"
+        }
+      ],
+      "tested_at": "2026-01-09T15:03:37.434660"
+    }
+  ],
+  "partner_network": {
+    "GitHub - Public Events": [
+      "<https://api.github.com/events?page=2>; rel=\"next\", <https://api.github.com/events?page=10>; rel=\"last\"",
+      "<https://api.github.com/events?page=2>; rel=\"next\", <https://api.github.com/events?page=10>; rel=\"last\""
+    ]
+  }
+}

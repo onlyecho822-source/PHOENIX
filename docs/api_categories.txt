@@ -1,0 +1,25 @@
+To follow the money and power through 2025's technology landscape, the key flows move from concentrated private investment into specialized infrastructure and AI systems, which in turn shape industry structures and global economic competitiveness. This path is marked by intense concentration, massive infrastructure demands, and strategic positioning by nations and corporations.
+
+Here is a breakdown of the major investment flows, who controls them, and the resulting dynamics:
+
+| Where Capital is Flowing | Key Players & Power Centers | Resulting Dynamics & Power Shifts |
+| :--- | :--- | :--- |
+| **AI Venture Capital & Corporate Capex** | **Hyperscalers (MSFT, AMZN, META, GOOGL):** Driving hundreds of billions in AI capex. **AI Startups:** Securing premium valuations, but capital is highly concentrated. | Market is "winner-takes-most." Private investment ($92B for AI infrastructure) drives growth more than policy. Funding for other tech vendors dries up, leading to **industry consolidation**. |
+| **AI Data Center Infrastructure** | **Hyperscalers & Chip Leaders (e.g., Nvidia):** Defining "AI factory" vision. **Energy Giants (e.g., Chevron, GE Vernova):** Partnering to provide gigawatt-scale power. | **Power is the new bottleneck.** AI facilities need 200+ MW vs. 30 MW for traditional data centers. This creates a race for energy deals, **geographic concentration**, and public pushback on resource use. |
+| **Agentic AI & Core Data Tech** | **Cloud & Data Platforms (e.g., Databricks, Snowflake):** Acquiring key capabilities (like PostgreSQL databases) to build end-to-end "AI platforms". | Shift from best-of-breed tools to **consolidated vendor platforms**. **Data quality and integration (via MCP, semantic layers)** become critical competitive moats for AI success. |
+| **National & Regional Competition** | **Leading Nations (US, China, Singapore, S. Korea):** Making sovereign investments in compute, chips, and skills. **Trailing Nations:** Risk being left behind without foundational digital infrastructure. | AI risks sparking a **"new era of divergence"** between countries. Competition is over **long-term productivity gains**, with the U.S. currently leading in investment and China in patents. |
+
+### 🔍 How to Search for "Seen and Unseen" Information via APIs
+You can investigate these flows using free APIs that track capital, infrastructure, and development activity:
+
+| Flow to Investigate | What to Look For (Example API Sources) | The "Unseen" Signal |
+| :--- | :--- | :--- |
+| **Investment & Funding** | **Crunchbase** or **PitchBook** API: Track venture deals by keyword ("AI," "MLOps," "data infra"). **SEC Edgar:** Search for 10-K/Q filings of hyperscalers for "capital expenditure" details. | Shift in funding from general SaaS to **specific AI infrastructure layers** (e.g., inference optimization, specialized semiconductors). Early funding in **energy-tech for data centers** (e.g., modular nuclear, advanced cooling). |
+| **Infrastructure Build-out** | **U.S. Census Bureau API:** New `Data Center Construction` spending data. **EIA (Energy Info. Admin.) API:** Electricity demand by region/customer. | **Geographic clustering** of power demand. **Permitting delays** and local opposition as friction points slowing deployment. |
+| **Technology Adoption & Labor** | **Google Trends API:** Search volume for terms like "Agentic AI," "MCP," "AI distillation." **Job Posting APIs (e.g., LinkedIn, Indeed):** Demand for skills like "AI agent developer," "semantic modeler." | Rise of **niche specializations** (e.g., prompt engineering for agents, data modeling for AI). Skills gap indicating which tech is moving from pilot to production. |
+| **Global Divergence** | **World Bank API:** Indicators for "ICT goods exports," "research expenditure." **GitHub API:** Activity in AI/ML repos by contributor location. | **Open-source contribution patterns** showing which countries are building vs. consuming core AI tech. Trade data on **AI-specific hardware**. |
+
+### 💎 Key Synthesis
+The central story is a **self-reinforcing cycle**: massive private capital → specialized infrastructure and AI models → increased productivity and data advantages → more capital and market power for the leaders. This cycle risks creating significant divides: between leading tech giants and other companies, between regions with abundant power and those without, and between nations with strong digital foundations and those still building them.
+
+I hope this framework helps you trace the capital and power flows. Are you more interested in exploring a specific flow, such as energy infrastructure deals or global AI patent trends, in greater detail?

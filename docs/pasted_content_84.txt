@@ -1,0 +1,21 @@
+To "follow the money and power" in AI, you need to track investment flows, market control, and political influence. Here's a breakdown of the current landscape and how you might search for the data to analyze it.
+
+### 💰 The Flow of Money & Concentration of Power
+The AI ecosystem is defined by massive capital concentration and a struggle for control between corporations, investors, and governments.
+
+| Dimension of Power | What to Look For | Why It Matters | Suggested Data/API Approach |
+| :--- | :--- | :--- | :--- |
+| **Market & Investment** | Record private investment, fears of a bubble, and concentration around a few "picks and shovels" companies. | Shows where capital expects the highest returns and signals potential overvaluation and systemic risk. | **Stock/financial APIs** for public tech giants; **VC/PE databases** (often paid) for private investment flows. |
+| **Corporate Control** | Dominance by a handful of U.S.-based tech giants and model labs (e.g., OpenAI, Anthropic, Google, Microsoft). | These companies control foundational infrastructure, set industry standards, and have outsized lobbying power. | **Business/company data APIs** for market share, partnerships (e.g., Disney-OpenAI deal), and supply chain analysis. |
+| **Geopolitics & Sovereignty** | Nations pursuing **AI sovereignty**, forming public-private alliances, and treating AI as national security infrastructure. | Defines which countries lead and sets rules for cross-border data, compute, and technology. | **Government procurement APIs**, **patent databases**, and **policy trackers** (like the Global AI Law and Policy Tracker). |
+| **Policy & Regulation** | Intense lobbying and legal battles, especially around federal preemption of state laws. Big Tech funds super PACs to influence lawmakers. | Determines legal liability, consumer protections, and whether democratic governance can keep pace with corporate interests. | **Legislative tracking APIs** (e.g., for U.S. Congress/state bills), **campaign finance databases**, and **legal case databases**. |
+
+### 🔍 A Strategic Approach to Finding Data
+General API directories () are a starting point, but the specialized data you need for power analysis often requires targeted sources:
+*   **Start with Clear Objectives**: Decide if you're tracking **investment** (look for financial market APIs), **corporate influence** (business intelligence APIs), or **policy** (legislative and lobbying APIs).
+*   **Prioritize Official and Specialized Sources**: For the most reliable data on investments, look to financial data providers. For policy, government open-data portals and watchdog NGOs often provide crucial datasets and feeds.
+*   **"Follow the Paper Trail"**: Power manifests in documents—SEC filings, legislative texts, contract awards, and patent filings. APIs that provide access to these are invaluable.
+
+The trends suggest the central tension for 2026 is between **corporate consolidation** of technical power and **governmental efforts** to assert control through regulation and partnerships.
+
+I hope this framework helps guide your investigation. If you can share the specific aspect of "money and power" you find most compelling (e.g., venture capital, lobbying, national strategies), I may be able to help brainstorm more specific types of data sources to target.

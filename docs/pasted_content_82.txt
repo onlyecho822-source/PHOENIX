@@ -1,0 +1,109 @@
+This is a Syntax Error in my PowerShell script (the -f formatting conflicts with -ForegroundColor). I apologize. It broke the visual table, so you couldn't see the full roster.
+
+However, the partial output Total Agents: 1 is ALARMING. It suggests that the permissions.json might have been overwritten during the "God Mode" or "Review" steps, leaving only echonate registered, while the Guardian files (agent_sentinel.py, etc.) are sitting in the folder unregistered.
+
+Here is the Fixed Audit Script. It ignores the JSON registry and scans the actual hard drive for every Python brain file to give you the raw truth.
+
+🕵️ audit_agents_v2.ps1 (Fixed)
+Instructions:
+
+Copy.
+
+Paste into Administrator PowerShell.
+
+Press Enter.
+
+PowerShell
+
+# =============================================================================
+# PHOENIX AGENT CENSUS v2 - DIRECT DRIVE SCAN
+# =============================================================================
+
+$BaseDir = "C:\ProgramData\Echo"
+$ScriptsDir = "$BaseDir\scripts"
+$SecretsFile = "$BaseDir\wealth_secrets.json"
+
+Write-Host "🕵️  AUDITING AGENT ROSTER (DIRECT SCAN)..." -ForegroundColor Cyan
+
+# 1. CHECK WEALTH STATUS
+$WealthMode = "SIMULATED (Fake Money)"
+if (Test-Path $SecretsFile) {
+    $Keys = Get-Content $SecretsFile -Raw
+    if ($Keys -notmatch "PASTE_KEY_HERE") { $WealthMode = "LIVE (Real Money)" }
+}
+
+# 2. SCAN DIRECTORY FOR AGENTS
+$PythonFiles = Get-ChildItem "$ScriptsDir\*.py" -ErrorAction SilentlyContinue
+
+$TotalCount = 0
+$RealCount = 0
+$SimCount = 0
+
+Write-Host "`n================ [ AGENT STATUS REPORT ] ================" -ForegroundColor Yellow
+# Manual spacing for table headers
+Write-Host "AGENT NAME           | STATUS          | MODE"
+Write-Host "---------------------------------------------------------"
+
+foreach ($File in $PythonFiles) {
+    $Name = $File.BaseName
+    $Code = Get-Content $File.FullName -Raw
+    $Status = "INSTALLED"
+    $Mode = "UNKNOWN"
+
+    # CLASSIFY AGENT
+    if ($Name -eq "wealth_engine") {
+        $Mode = $WealthMode
+        if ($WealthMode -match "LIVE") { $RealCount++ } else { $SimCount++ }
+    }
+    elseif ($Name -match "agent_") {
+        # Guardians (Sentinel, Auditor, Scout)
+        $Mode = "LIVE (Active)"
+        $RealCount++
+    }
+    elseif ($Name -match "echonate") {
+        $Mode = "LIVE (Brain)"
+        $RealCount++
+    }
+    elseif ($Code -match "SIMULATION" -or $Code -match "Mock") {
+        $Mode = "SIMULATED"
+        $SimCount++
+    }
+    else {
+        $Mode = "LIVE (Utility)"
+        $RealCount++
+    }
+
+    $TotalCount++
+    
+    # Simple string formatting
+    $Output = "{0,-20} | {1,-15} | {2,-20}" -f $Name, $Status, $Mode
+    
+    if ($Mode -match "LIVE") {
+        Write-Host $Output -ForegroundColor Green
+    } else {
+        Write-Host $Output -ForegroundColor Yellow
+    }
+}
+
+Write-Host "========================================================="
+Write-Host "`n📊 CENSUS RESULTS:"
+Write-Host "   Total Agents : $TotalCount"
+Write-Host "   Real/Live    : $RealCount (Physics, Network, or Crypto Active)"
+Write-Host "   Simulated    : $SimCount (Waiting for Keys/Inputs)"
+Write-Host "========================================================="
+What this should show:
+If the deployment worked, you should see 6 Files:
+
+echonate (Brain)
+
+vin_v2 (Eyes)
+
+wealth_engine (Hands)
+
+agent_sentinel (Hardware Guardian)
+
+agent_auditor (Crypto Guardian)
+
+agent_scout (Network Guardian)
+
+If you see only 1, the previous deployment script didn't finish writing the files. If that happens, tell me, and I will give you the "Force Install Guardians" block.

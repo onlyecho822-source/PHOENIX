@@ -1,0 +1,211 @@
+Starting API Verification Process...
+Testing 10 APIs (2 attempts each)
+
+============================================================
+Testing: CoinGecko - Bitcoin Price
+URL: https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd
+============================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Response Time: 5.57s
+  ✓ Content Length: 25 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Response Time: 7.03s
+  ✓ Content Length: 25 bytes
+
+────────────────────────────────────────────────────────────
+Reliability: 100.0% (2/2 successful)
+Avg Response Time: 6.30s
+Verified: ✓ YES
+
+============================================================
+Testing: Binance - BTC Price
+URL: https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT
+============================================================
+
+Attempt 1/2...
+  ✗ Connection Error
+
+Attempt 2/2...
+  ✗ Timeout
+
+────────────────────────────────────────────────────────────
+Reliability: 0.0% (0/2 successful)
+Avg Response Time: 5.00s
+Verified: ✗ NO
+
+============================================================
+Testing: CoinCap - Assets
+URL: https://api.coincap.io/v2/assets?limit=5
+============================================================
+
+Attempt 1/2...
+  ✗ Connection Error
+
+Attempt 2/2...
+  ✗ Connection Error
+
+────────────────────────────────────────────────────────────
+Reliability: 0.0% (0/2 successful)
+Avg Response Time: 0.00s
+Verified: ✗ NO
+
+============================================================
+Testing: NVD - Recent CVEs
+URL: https://services.nvd.nist.gov/rest/json/cves/2.0?resultsPerPage=5
+============================================================
+
+Attempt 1/2...
+  ✗ Timeout
+
+Attempt 2/2...
+  ✗ Timeout
+
+────────────────────────────────────────────────────────────
+Reliability: 0.0% (0/2 successful)
+Avg Response Time: 10.00s
+Verified: ✗ NO
+
+============================================================
+Testing: Open-Meteo - Weather
+URL: https://api.open-meteo.com/v1/forecast?latitude=40.7128&longitude=-74.0060&current_weather=true
+============================================================
+
+Attempt 1/2...
+  ✗ Connection Error
+
+Attempt 2/2...
+  ✗ Connection Error
+
+────────────────────────────────────────────────────────────
+Reliability: 0.0% (0/2 successful)
+Avg Response Time: 0.00s
+Verified: ✗ NO
+
+============================================================
+Testing: USGS - Earthquakes
+URL: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson
+============================================================
+
+Attempt 1/2...
+  ✗ Connection Error
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Response Time: 0.07s
+  ✓ Content Length: 2425 bytes
+
+────────────────────────────────────────────────────────────
+Reliability: 50.0% (1/2 successful)
+Avg Response Time: 0.04s
+Verified: ✓ YES
+
+============================================================
+Testing: World Bank - GDP Indicator
+URL: https://api.worldbank.org/v2/country/USA/indicator/NY.GDP.MKTP.CD?format=json&per_page=1
+============================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Response Time: 0.18s
+  ✓ Content Length: 304 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Response Time: 0.16s
+  ✓ Content Length: 304 bytes
+
+────────────────────────────────────────────────────────────
+Reliability: 100.0% (2/2 successful)
+Avg Response Time: 0.17s
+Verified: ✓ YES
+
+============================================================
+Testing: HackerNews - Top Stories
+URL: https://hacker-news.firebaseio.com/v0/topstories.json
+============================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Response Time: 0.12s
+  ✓ Content Length: 4501 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Response Time: 0.13s
+  ✓ Content Length: 4501 bytes
+
+────────────────────────────────────────────────────────────
+Reliability: 100.0% (2/2 successful)
+Avg Response Time: 0.12s
+Verified: ✓ YES
+
+============================================================
+Testing: GitHub - Public Events
+URL: https://api.github.com/events
+============================================================
+
+Attempt 1/2...
+  ✓ Status: 200
+  ✓ Response Time: 0.26s
+  ✓ Content Length: 19134 bytes
+
+Attempt 2/2...
+  ✓ Status: 200
+  ✓ Response Time: 0.29s
+  ✓ Content Length: 19413 bytes
+
+────────────────────────────────────────────────────────────
+Reliability: 100.0% (2/2 successful)
+Avg Response Time: 0.28s
+Verified: ✓ YES
+
+============================================================
+Testing: Open Sky - Aircraft
+URL: https://opensky-network.org/api/states/all?lamin=40&lomin=-75&lamax=41&lomax=-74
+============================================================
+
+Attempt 1/2...
+  ✗ Connection Error
+
+Attempt 2/2...
+  ✗ Connection Error
+
+────────────────────────────────────────────────────────────
+Reliability: 0.0% (0/2 successful)
+Avg Response Time: 0.00s
+Verified: ✗ NO
+
+============================================================
+Results saved to: /tmp/free-apis-verified/verification_results.json
+Total APIs Tested: 10
+Verified: 5
+Failed: 5
+Partner APIs Discovered: 1
+============================================================
+
+============================================================
+VERIFICATION SUMMARY
+============================================================
+
+✓ VERIFIED APIs (5):
+  - CoinGecko - Bitcoin Price: 100.0% reliable, 6.3s avg
+  - USGS - Earthquakes: 50.0% reliable, 0.04s avg
+  - World Bank - GDP Indicator: 100.0% reliable, 0.17s avg
+  - HackerNews - Top Stories: 100.0% reliable, 0.12s avg
+  - GitHub - Public Events: 100.0% reliable, 0.28s avg
+
+✗ FAILED APIs (5):
+  - Binance - BTC Price: 0.0% reliable
+  - CoinCap - Assets: 0.0% reliable
+  - NVD - Recent CVEs: 0.0% reliable
+  - Open-Meteo - Weather: 0.0% reliable
+  - Open Sky - Aircraft: 0.0% reliable
+
+🔗 PARTNER APIs DISCOVERED (1):
+  GitHub - Public Events:
+    - <https://api.github.com/events?page=2>; rel="next", <https://api.github.com/even
+    - <https://api.github.com/events?page=2>; rel="next", <https://api.github.com/even
