@@ -1,0 +1,337 @@
+#cloud-config
+# ============================================================================
+# TRUTH LEDGER CLOUD-INIT - ZERO-TOUCH DEPLOYMENT
+# ============================================================================
+# Purpose: Auto-deploy Truth Ledger on VPS creation (no SSH needed)
+# Compatible: Oracle Cloud, AWS, GCP, DigitalOcean, Vultr, Linode
+# Time: 5-10 minutes (automatic)
+# ============================================================================
+# 
+# USAGE:
+# 1. Create VPS (Oracle/AWS/GCP/DigitalOcean)
+# 2. In "User Data" or "Cloud-Init" section, paste this entire file
+# 3. Create instance
+# 4. Wait 10 minutes
+# 5. SSH in and run: systemctl status truth-ledger
+# 
+# ============================================================================
+
+# Update package list
+package_update: true
+package_upgrade: true
+
+# Install required packages
+packages:
+  - git
+  - python3
+  - python3-pip
+  - sqlite3
+  - ufw
+  - fail2ban
+
+# Create dedicated user
+users:
+  - name: truthledger
+    system: true
+    shell: /bin/false
+    home: /opt/truth-nexus
+
+# Write Truth Ledger Python script directly (no GitHub dependency)
+write_files:
+  - path: /opt/truth-nexus/truth_ledger.py
+    owner: truthledger:truthledger
+    permissions: '0755'
+    content: |
+      #!/usr/bin/env python3
+      """
+      TRUTH LEDGER - API Monitoring with Cryptographic Verification
+      Auto-deployed via cloud-init
+      """
+      import sqlite3
+      import hashlib
+      import time
+      import json
+      from datetime import datetime
+      from typing import Dict, Optional
+      import urllib.request
+      import urllib.error
+      
+      # Configuration
+      DB_PATH = "/opt/truth-nexus/truth_ledger.db"
+      CHECK_INTERVAL = 3600  # 1 hour
+      
+      # API endpoints to monitor
+      APIS = {
+          "stripe": "https://status.stripe.com/api/v2/status.json",
+          "openai": "https://status.openai.com/api/v2/status.json",
+          "github": "https://www.githubstatus.com/api/v2/status.json",
+          "cloudflare": "https://www.cloudflarestatus.com/api/v2/status.json",
+          "aws": "https://status.aws.amazon.com/data.json",
+          "vercel": "https://www.vercel-status.com/api/v2/status.json",
+          "netlify": "https://www.netlifystatus.com/api/v2/status.json",
+          "mongodb": "https://status.mongodb.com/api/v2/status.json",
+          "redis": "https://status.redis.com/api/v2/status.json",
+          "datadog": "https://status.datadoghq.com/api/v2/status.json"
+      }
+      
+      def init_database():
+          """Initialize SQLite database with hash chain"""
+          conn = sqlite3.connect(DB_PATH)
+          cur = conn.cursor()
+          
+          cur.execute("""
+              CREATE TABLE IF NOT EXISTS checks (
+                  id INTEGER PRIMARY KEY AUTOINCREMENT,
+                  timestamp REAL NOT NULL,
+                  api_name TEXT NOT NULL,
+                  endpoint TEXT NOT NULL,
+                  status TEXT NOT NULL,
+                  status_code INTEGER,
+                  response_time_ms INTEGER,
+                  previous_hash TEXT,
+                  check_hash TEXT NOT NULL,
+                  raw_response TEXT
+              )
+          """)
+          
+          cur.execute("""
+              CREATE INDEX IF NOT EXISTS idx_api_timestamp 
+              ON checks(api_name, timestamp)
+          """)
+          
+          conn.commit()
+          conn.close()
+          print(f"[{datetime.now()}] Database initialized: {DB_PATH}")
+      
+      def get_previous_hash(api_name: str) -> Optional[str]:
+          """Get the last hash for this API"""
+          conn = sqlite3.connect(DB_PATH)
+          cur = conn.cursor()
+          
+          cur.execute("""
+              SELECT check_hash FROM checks 
+              WHERE api_name = ? 
+              ORDER BY id DESC LIMIT 1
+          """, (api_name,))
+          
+          result = cur.fetchone()
+          conn.close()
+          
+          return result[0] if result else "GENESIS"
+      
+      def compute_hash(timestamp: float, api_name: str, endpoint: str, 
+                      status: str, status_code: int, previous_hash: str) -> str:
+          """Compute SHA-256 hash for this check"""
+          data = f"{timestamp}|{api_name}|{endpoint}|{status}|{status_code}|{previous_hash}"
+          return hashlib.sha256(data.encode()).hexdigest()
+      
+      def check_api(api_name: str, endpoint: str) -> Dict:
+          """Check API status"""
+          start_time = time.time()
+          
+          try:
+              req = urllib.request.Request(
+                  endpoint,
+                  headers={'User-Agent': 'TruthLedger/1.0'}
+              )
+              
+              with urllib.request.urlopen(req, timeout=10) as response:
+                  status_code = response.getcode()
+                  response_body = response.read().decode('utf-8')
+                  response_time_ms = int((time.time() - start_time) * 1000)
+                  
+                  return {
+                      'status': 'UP',
+                      'status_code': status_code,
+                      'response_time_ms': response_time_ms,
+                      'raw_response': response_body[:1000]  # Limit size
+                  }
+                  
+          except urllib.error.HTTPError as e:
+              return {
+                  'status': 'ERROR',
+                  'status_code': e.code,
+                  'response_time_ms': int((time.time() - start_time) * 1000),
+                  'raw_response': str(e)
+              }
+              
+          except Exception as e:
+              return {
+                  'status': 'DOWN',
+                  'status_code': 0,
+                  'response_time_ms': int((time.time() - start_time) * 1000),
+                  'raw_response': str(e)
+              }
+      
+      def save_check(api_name: str, endpoint: str, result: Dict):
+          """Save check result with hash chain"""
+          timestamp = time.time()
+          previous_hash = get_previous_hash(api_name)
+          
+          check_hash = compute_hash(
+              timestamp,
+              api_name,
+              endpoint,
+              result['status'],
+              result['status_code'],
+              previous_hash
+          )
+          
+          conn = sqlite3.connect(DB_PATH)
+          cur = conn.cursor()
+          
+          cur.execute("""
+              INSERT INTO checks (
+                  timestamp, api_name, endpoint, status, status_code,
+                  response_time_ms, previous_hash, check_hash, raw_response
+              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+          """, (
+              timestamp,
+              api_name,
+              endpoint,
+              result['status'],
+              result['status_code'],
+              result['response_time_ms'],
+              previous_hash,
+              check_hash,
+              result['raw_response']
+          ))
+          
+          conn.commit()
+          conn.close()
+          
+          print(f"[{datetime.now()}] {api_name}: {result['status']} "
+                f"({result['status_code']}) - {result['response_time_ms']}ms")
+      
+      def run_monitoring_cycle():
+          """Run one complete monitoring cycle"""
+          print(f"\n{'='*80}")
+          print(f"MONITORING CYCLE - {datetime.now()}")
+          print(f"{'='*80}")
+          
+          for api_name, endpoint in APIS.items():
+              try:
+                  result = check_api(api_name, endpoint)
+                  save_check(api_name, endpoint, result)
+              except Exception as e:
+                  print(f"[{datetime.now()}] ERROR checking {api_name}: {e}")
+          
+          # Show summary
+          conn = sqlite3.connect(DB_PATH)
+          cur = conn.cursor()
+          cur.execute("SELECT COUNT(*) FROM checks")
+          total_checks = cur.fetchone()[0]
+          conn.close()
+          
+          print(f"\nTotal checks in database: {total_checks}")
+          print(f"Next check in {CHECK_INTERVAL} seconds")
+      
+      def main():
+          """Main monitoring loop"""
+          print("="*80)
+          print("TRUTH LEDGER STARTING")
+          print("="*80)
+          print(f"Database: {DB_PATH}")
+          print(f"APIs monitored: {len(APIS)}")
+          print(f"Check interval: {CHECK_INTERVAL} seconds")
+          print("="*80)
+          
+          init_database()
+          
+          while True:
+              try:
+                  run_monitoring_cycle()
+                  time.sleep(CHECK_INTERVAL)
+              except KeyboardInterrupt:
+                  print("\nShutting down...")
+                  break
+              except Exception as e:
+                  print(f"ERROR: {e}")
+                  time.sleep(60)
+      
+      if __name__ == "__main__":
+          main()
+
+  - path: /etc/systemd/system/truth-ledger.service
+    permissions: '0644'
+    content: |
+      [Unit]
+      Description=PHOENIX Truth Ledger Monitor
+      After=network-online.target
+      Wants=network-online.target
+      
+      [Service]
+      Type=simple
+      User=truthledger
+      Group=truthledger
+      WorkingDirectory=/opt/truth-nexus
+      ExecStart=/usr/bin/python3 /opt/truth-nexus/truth_ledger.py
+      Restart=always
+      RestartSec=10
+      StandardOutput=journal
+      StandardError=journal
+      
+      [Install]
+      WantedBy=multi-user.target
+
+# Run commands after files are written
+runcmd:
+  # Configure firewall
+  - ufw default deny incoming
+  - ufw default allow outgoing
+  - ufw allow ssh
+  - ufw allow 80/tcp
+  - ufw allow 443/tcp
+  - echo "y" | ufw enable
+  
+  # Set correct ownership
+  - chown -R truthledger:truthledger /opt/truth-nexus
+  - chmod 755 /opt/truth-nexus/truth_ledger.py
+  
+  # Enable and start service
+  - systemctl daemon-reload
+  - systemctl enable truth-ledger
+  - systemctl start truth-ledger
+  
+  # Enable fail2ban
+  - systemctl enable fail2ban
+  - systemctl start fail2ban
+  
+  # Create verification script
+  - |
+    cat > /root/verify.sh << 'EOF'
+    #!/bin/bash
+    echo "=== TRUTH LEDGER STATUS ==="
+    systemctl status truth-ledger --no-pager
+    echo ""
+    echo "=== DATABASE STATS ==="
+    sqlite3 /opt/truth-nexus/truth_ledger.db "SELECT COUNT(*) as total_checks FROM checks;"
+    sqlite3 /opt/truth-nexus/truth_ledger.db "SELECT api_name, COUNT(*) as checks FROM checks GROUP BY api_name;"
+    echo ""
+    echo "=== RECENT CHECKS ==="
+    sqlite3 /opt/truth-nexus/truth_ledger.db "SELECT datetime(timestamp, 'unixepoch'), api_name, status, status_code FROM checks ORDER BY id DESC LIMIT 10;"
+    EOF
+  - chmod +x /root/verify.sh
+  
+  # Log completion
+  - echo "Truth Ledger deployment complete at $(date)" >> /var/log/cloud-init-output.log
+
+# Final message
+final_message: |
+  ============================================================================
+  TRUTH LEDGER DEPLOYED SUCCESSFULLY
+  ============================================================================
+  
+  Service: truth-ledger
+  Status: systemctl status truth-ledger
+  Logs: journalctl -u truth-ledger -f
+  Database: /opt/truth-nexus/truth_ledger.db
+  
+  Verify deployment:
+    ssh root@YOUR_IP
+    /root/verify.sh
+  
+  Data collection has started!
+  Check back in 1 hour to see first results.
+  
+  ============================================================================
